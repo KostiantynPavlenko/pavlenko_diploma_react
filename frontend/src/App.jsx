@@ -2,9 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import Layout from './components/Layout';
 import About from './pages/about';
 import Hotels from './pages/hotels';
-import Hotel from './pages/Hotel';
+import Hotel from './pages/hotel';
 import { hotelLoader } from './loaders/hotelLoader';
-
 
 
 const router = createBrowserRouter([
