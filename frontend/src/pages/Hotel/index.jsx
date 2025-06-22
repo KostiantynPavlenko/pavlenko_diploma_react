@@ -2,7 +2,6 @@ import { Card, CardContent, CardMedia, Rating, Stack, Typography } from "@mui/ma
 import { useLoaderData } from "react-router"
 
 export default function Hotel() {
-
   const { name, address, city, hotel_rating, hotelImg } = useLoaderData();
 
   return (

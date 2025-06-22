@@ -56,7 +56,6 @@ export default function DestinationSelector({onCitySelect, selectedCity}) {
           Show Hotels
         </Button>
       </Box>
-
     </div>
   )
 }
