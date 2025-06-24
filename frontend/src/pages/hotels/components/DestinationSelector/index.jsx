@@ -29,33 +29,31 @@ export default function DestinationSelector({onCitySelect, selectedCity}) {
   }
 
   return (
-    <div>
-      <Box display={'flex'} gap={2}>
-        <FormControl sx={{ minWidth: '300px' }}>
-          <InputLabel id="demo-simple-select-label">Destination</InputLabel>
-          <Select
-            label="Destination"
-            value={localSelectedCity?.id || ''}
-            onChange={(e) => {
-              const selected = destinations.find(dest => dest.id === e.target.value);
-              setLocalSelectedCity(selected)
-            }}
-          >
-            {loading ? <p>Loading...</p> : destinations.map(destination => {
-              return <MenuItem key={destination.id} value={destination.id}>{destination.label}</MenuItem> 
-            })}
-          </Select>
-        </FormControl>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => handleSearchClick()}
-          disabled={!localSelectedCity}
-          sx={{ display: 'block', mt: 2 }}
+    <Box display={'flex'} gap={2}>
+      <FormControl sx={{ minWidth: '300px' }}>
+        <InputLabel id="demo-simple-select-label">Destination</InputLabel>
+        <Select
+          label="Destination"
+          value={localSelectedCity?.id || ''}
+          onChange={(e) => {
+            const selected = destinations.find(dest => dest.id === e.target.value);
+            setLocalSelectedCity(selected)
+          }}
         >
-          Show Hotels
-        </Button>
-      </Box>
-    </div>
+          {loading ? <p>Loading...</p> : destinations.map(destination => {
+            return <MenuItem key={destination.id} value={destination.id}>{destination.label}</MenuItem> 
+          })}
+        </Select>
+      </FormControl>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => handleSearchClick()}
+        disabled={!localSelectedCity}
+        sx={{ display: 'block', mt: 2 }}
+      >
+        Show Hotels
+      </Button>
+    </Box>
   )
 }

@@ -5,6 +5,7 @@ import Hotels from './pages/hotels';
 import Hotel from './pages/hotel';
 import { hotelLoader } from './loaders/hotelLoader';
 
+
 const router = createBrowserRouter([
   {
     path: '/',

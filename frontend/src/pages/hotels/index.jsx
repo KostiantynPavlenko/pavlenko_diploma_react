@@ -7,7 +7,7 @@ import { getAllHotels, getHotelsByDestination } from "../../store/thunks/hotelsT
 import HotelsList from "./components/HotelsList";
 import DestinationSelector from "./components/DestinationSelector";
 
-import { Box, Button } from "@mui/material";
+import { Box, Button, Pagination } from "@mui/material";
 
 const PAGE_SIZE = 12;
 
@@ -42,28 +42,21 @@ export default function Hotels() {
   }
 
   return (
-    <div>
-      <Box sx={{ maxWidth: '1200px', padding: '0 32px', margin: '0 auto'}}>     
-        <DestinationSelector onCitySelect={handleCitySelect} selectedCity={selectedCity}/>
-        { hotelsLoading ? <p>Loading...</p> : <HotelsList hotels={hotels} hotelsCount={hotelsCount}/>}
-        <div style={{ marginTop: 20 }}>
-          <Button
-            variant="outlined"
-            onClick={() => setPage(prev => Math.max(prev - 1, 0))}
-            disabled={page === 0}
-            sx={{ mr: 2 }}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => setPage(prev => Math.min(prev + 1, totalPages - 1))}
-            disabled={page >= totalPages - 1}
-          >
-            Next
-          </Button>
-        </div>
+    <Box sx={{ minHeight: '100vh', maxWidth: '1200px', padding: '0 32px', margin: '0 auto'}}>     
+      <DestinationSelector onCitySelect={handleCitySelect} selectedCity={selectedCity}/>
+      { hotelsLoading ? <p>Loading...</p> : <HotelsList hotels={hotels} hotelsCount={hotelsCount}/>}
+      <Box mt={4} display="flex" justifyContent="center">
+        <Pagination
+          count={totalPages}
+          page={page + 1}
+          onChange={(e, value) => setPage(value - 1)}
+          color="primary"
+          variant="outlined"
+          shape="rounded"
+          siblingCount={1}
+          boundaryCount={1}
+        />
       </Box>
-    </div>
+    </Box>
   )
 }
